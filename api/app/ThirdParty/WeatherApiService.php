@@ -45,7 +45,11 @@ class WeatherApiService
 
         try {
             $route = $route . $this->prepareQueryString($params);
-            $response = $this->requestor->request('GET', $route);
+            $response = $this->requestor->request('GET', $route, [
+                'curl' => [
+                   CURLOPT_CONNECTTIMEOUT_MS => 500 // this is throw error if api call take more then 500ms  
+                ]
+            ]);
             if ($response->getStatusCode() == 200) {
                 return json_decode($response->getBody()->getContents(), true);
             }
