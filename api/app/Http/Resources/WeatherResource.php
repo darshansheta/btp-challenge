@@ -53,7 +53,7 @@ class WeatherResource extends JsonResource
                 'snow3h' => $weather->snow_3h,
             ],
             'updatedAt'    => $weather->updated_at->diffForHumans(),
-            'calculatedAt' => $weather->updated_at->diffForHumans(),
+            'calculatedAt' => $weather->calculated_at->diffForHumans(),
         ];
     }
 }

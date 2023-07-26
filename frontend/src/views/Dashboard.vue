@@ -74,7 +74,6 @@ export default {
             <Column :key="fieldIndex" :header="field.header">
               <template #body="slotProps">
                 <Button @click="setActiveUserWeather(slotProps.data.id)">
-                  <!-- <WeatherIcon :icon="slotProps.data.icon" /> -->
                   Show
                 </Button>
               </template>

@@ -55,7 +55,8 @@ class WeatherService
 
     public function saveWeatherData(User $user, array $data): void
     {
-        $user->weather()->updateOrCreate($data);
+        $weather = Weather::firstOrCreate(['user_id' => $user->id]);
+        $weather->update($data);
 
         WeatherUpdated::dispatch($user);
     }
