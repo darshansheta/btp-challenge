@@ -2,6 +2,7 @@
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\UsersController;
 
 /*
 |--------------------------------------------------------------------------
@@ -19,4 +20,9 @@ Route::get('/', function () {
         'message' => 'all systems are a go',
         'users' => \App\Models\User::all(),
     ]);
+});
+
+Route::controller(UsersController::class)->prefix('/users')->group(function () {
+    Route::get('/', 'index')->name('users.index');
+    Route::get('/{user}/weather', 'weather')->name('weather.show');
 });
